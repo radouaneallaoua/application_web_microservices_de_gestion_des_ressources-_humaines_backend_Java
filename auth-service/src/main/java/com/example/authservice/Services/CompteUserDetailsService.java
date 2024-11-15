@@ -28,7 +28,7 @@ public class CompteUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("User not found");
         }
 
-        // Return UserDetails with proper authorities directly from the roles
+      
         return new org.springframework.security.core.userdetails.User(
                 compte.getEmail(),
                 compte.getMotDePasse(),
@@ -36,7 +36,7 @@ public class CompteUserDetailsService implements UserDetailsService {
         );
     }
 
-    // Convert roles to GrantedAuthority directly
+   
     private Collection<? extends GrantedAuthority> getAuthorities(Compte compte) {
         return compte.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority(role.getRoleName().toString()))
