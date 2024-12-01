@@ -54,7 +54,7 @@ public class AuthController {
         String employeId=compteService.getCompteEmployeId(compteRequestDto.getEmail());
         JwtClaimsSet jwtClaimsSet= JwtClaimsSet.builder()
                 .issuedAt(instant)
-                .expiresAt(instant.plus(60, ChronoUnit.DAYS))
+                .expiresAt(instant.plus(60, ChronoUnit.MINUTES))
                 .subject(compteRequestDto.getEmail()+"::"+employeId)
                 .claim("scope",scope)
                 .build();
